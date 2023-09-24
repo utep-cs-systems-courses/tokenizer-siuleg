@@ -23,8 +23,8 @@ int bstStrlen(char *s)
 
 
 
-void
-bstInsert(BstNode **rootp, char *str) 
+/* Method to insert a node a character */
+void bstInsert(BstNode **rootp, char *str) 
 {
   if (*rootp == 0) {		/* insert here */
     BstNode *newNode = malloc(sizeof(BstNode));
