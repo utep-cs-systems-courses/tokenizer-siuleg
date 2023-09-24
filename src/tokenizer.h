@@ -43,6 +43,6 @@ void print_tokens(char **tokens);
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens);
 
-void save_user_input();
+char *save_user_input();
 
 #endif

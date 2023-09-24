@@ -6,9 +6,10 @@
 
 void tokenize_string(char *str) {}
 
-/* Captures and saves the user input
+/**
+ * Captures and saves the user input
  *
- * @returns user_input
+ * @return user_input
  */
 char *save_user_input() {
   char *user_input = malloc(MAX_SIZE * sizeof(char));

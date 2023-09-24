@@ -19,7 +19,7 @@ int main() {
     switch (c) {
     case 't':
       puts("You selected to tokenize a string\n");
-      save_user_input();
+      string_to_tokenize = save_user_input();
       break;
     case 'q':
       puts("Bye!");
