@@ -1,15 +1,32 @@
+#include "tokenizer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 #define MAX_SIZE 250
-#define DELIMETER ' '
 
-void tokenize_string(char *str) {}
+int space_char(char c) {
+  if (c == '\t' || c == ' ')
+    return 1;
+  else
+    return 0;
+}
+
+int non_space_char(char c) {
+  if (c == '\t' || c == ' ')
+    return 0;
+  else
+    return 1;
+}
+
+char **tokenize(char *str) {
+  int word_start, word_end = 0;
+  int str_length = sizeof(str) / sizeof(char);
+
+  return NULL;
+}
 
 /**
  * Captures and saves the user input
- *
- * @return user_input
  */
 char *save_user_input() {
   char *user_input = malloc(MAX_SIZE * sizeof(char));
@@ -27,7 +44,6 @@ char *save_user_input() {
     user_input[i] = c;
     c = getchar();
   }
-  puts("");
-  printf("'%s'\n\n", user_input);
+  printf("`%s`\n\n", user_input);
   return user_input;
 }

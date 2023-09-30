@@ -1,8 +1,9 @@
 #include "tokenizer.h"
-#include <malloc.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-/* Entry point to the code*/
+/* Entry point to the code. It displays a basic UI for the user to interact
+ * with*/
 int main() {
   printf("\x1b[2J\x1b[2H");
   puts("Welcome!");
@@ -23,7 +24,6 @@ int main() {
       break;
     case 'q':
       puts("Bye!");
-
       goto done;
     default:
       printf("Unrecognized option '%c', please try again!\n", c);
