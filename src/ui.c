@@ -24,9 +24,8 @@ int main() {
       string_to_tokenize = save_user_input();
       tokens = tokenize(string_to_tokenize);
       puts(string_to_tokenize);
-      for (int i = 0; i < 5; i++) {
-        puts(tokens[i]);
-      }
+      free(string_to_tokenize);
+      free(tokens);
       break;
     case 'q':
       puts("Bye!");
@@ -37,7 +36,5 @@ int main() {
   }
 
 done:
-  free(string_to_tokenize);
-  free(tokens);
   return 0;
 }
