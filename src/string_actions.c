@@ -18,9 +18,45 @@ int non_space_char(char c) {
     return 1;
 }
 
+char *token_start(char *str) {
+  int i = 0;
+  while (space_char(str[i]))
+    i++;
+  return &str[i];
+}
+
+char *token_terminator(char *token) {
+  char *token_end;
+  int token_size = sizeof(token) / sizeof('a');
+  for (int i = 0; i < token_size; i++) {
+    if (space_char(token[i])) {
+      token_end = (char *)&token[i];
+      return token_end;
+    }
+  }
+  return (char *)0;
+}
+
+int count_tokens(char *str) {
+  int count = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    count += (space_char(str[i]) && non_space_char(str[i + 1])) ? 1 : 0;
+  }
+  return count + 1;
+}
+
+char *copy_str(char *inStr, short len) {
+  char *str_copy = (char *)malloc(len * sizeof(char) + 1);
+  for (short i = 0; i < len; i++) {
+    str_copy[i] = inStr[i];
+  }
+  str_copy[-1] = '\0';
+  return str_copy;
+}
+
 char **tokenize(char *str) {
-  int word_start, word_end = 0;
-  int str_length = sizeof(str) / sizeof(char);
+  int token_count = count_tokens(str);
+  char **tokens = (char **)malloc(token_count * (sizeof(char *)));
 
   return NULL;
 }
@@ -44,6 +80,5 @@ char *save_user_input() {
     user_input[i] = c;
     c = getchar();
   }
-  printf("`%s`\n\n", user_input);
   return user_input;
 }

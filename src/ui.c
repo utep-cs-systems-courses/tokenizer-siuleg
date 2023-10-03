@@ -21,6 +21,7 @@ int main() {
     case 't':
       puts("You selected to tokenize a string\n");
       string_to_tokenize = save_user_input();
+      puts(string_to_tokenize);
       break;
     case 'q':
       puts("Bye!");
