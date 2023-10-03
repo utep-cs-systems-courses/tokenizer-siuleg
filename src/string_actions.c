@@ -50,15 +50,29 @@ char *copy_str(char *inStr, short len) {
   for (short i = 0; i < len; i++) {
     str_copy[i] = inStr[i];
   }
-  str_copy[-1] = '\0';
+  str_copy[len] = '\0';
   return str_copy;
+}
+
+short get_length(char *inStr) {
+  short length = 0;
+  for (length = 0; non_space_char(inStr[length]); length++)
+    ;
+  return length;
 }
 
 char **tokenize(char *str) {
   int token_count = count_tokens(str);
   char **tokens = (char **)malloc(token_count * (sizeof(char *)));
+  char *temp_ptr = str;
 
-  return NULL;
+  for (int i = 0; i < token_count; i++) {
+    temp_ptr = token_start(temp_ptr);
+    tokens[i] = copy_str(temp_ptr, get_length(temp_ptr));
+    temp_ptr = token_terminator(temp_ptr);
+  }
+  tokens[token_count] = 0;
+  return tokens;
 }
 
 /**

@@ -8,6 +8,7 @@ int main() {
   printf("\x1b[2J\x1b[2H");
   puts("Welcome!");
   char *string_to_tokenize;
+  char **tokens;
   while (1) { // Infinite whlie loop
     fputs("Please enter 't' to tokenize a string, or 'q' to quit:\n> ", stdout);
     fflush(stdout);
@@ -21,7 +22,11 @@ int main() {
     case 't':
       puts("You selected to tokenize a string\n");
       string_to_tokenize = save_user_input();
+      tokens = tokenize(string_to_tokenize);
       puts(string_to_tokenize);
+      for (int i = 0; i < 5; i++) {
+        puts(tokens[i]);
+      }
       break;
     case 'q':
       puts("Bye!");
@@ -33,5 +38,6 @@ int main() {
 
 done:
   free(string_to_tokenize);
+  free(tokens);
   return 0;
 }
