@@ -57,29 +57,36 @@ char *copy_str(char *inStr, short len) {
 
 short get_length(char *inStr) {
   short length = 0;
-  for (length = 0; non_space_char(inStr[length]); length++)
-    ;
+  while (inStr[length] != '\0' && non_space_char(inStr[length]))
+    length++;
+  return length;
+}
+
+short get_full_str_length(char *inStr) {
+  short length = 0;
+  while (inStr[length] != '\0')
+    length++;
   return length;
 }
 
 char **tokenize(char *str) {
   int token_count = count_tokens(str);
-  puts("Counted tokens");
   char **tokens = (char **)malloc((token_count + 1) * (sizeof(char *)));
-  puts("Allocated space for tokens");
   char *temp_ptr = str;
-  puts("Created temp pointer");
 
-  puts("Entering for loop");
   for (int i = 0; i < token_count; i++) {
     temp_ptr = token_start(temp_ptr);
-    puts("\nset temp pointer to start of token");
     *(tokens + i) = copy_str(temp_ptr, get_length(temp_ptr));
-    puts("added copy of string to token");
     temp_ptr = token_terminator(temp_ptr);
-    puts("Moved temp pointer to end of token\n");
   }
+
   tokens[token_count] = NULL;
+
+  printf("\n");
+  for (int i = 0; i < token_count; i++) {
+    printf("Token[%d]: %s\n", i, tokens[i]);
+  }
+  printf("\n");
   return tokens;
 }
 

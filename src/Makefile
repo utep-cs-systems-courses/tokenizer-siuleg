@@ -1,7 +1,7 @@
 # compiler flgas -g for debug, -O3 for optimization
 CFLAGS=-g -O3
 
-OBJS= ui.o string_actions.o 
+OBJS= ui.o string_actions.o token_history.o
 
 # include file dependencies
 history.o: history.h

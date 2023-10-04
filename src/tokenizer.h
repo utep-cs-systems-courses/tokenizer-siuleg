@@ -45,4 +45,8 @@ void free_tokens(char **tokens);
 
 char *save_user_input();
 
+short get_length(char *inStr);
+
+short get_full_str_length(char *inStr);
+
 #endif
